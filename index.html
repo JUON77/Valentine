@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Memee 💌</title>
+  <style>
+    :root{
+      --bg1:#fff1f5;
+      --bg2:#fce7f3;
+      --card:#ffffff;
+      --ink:#111827;
+      --muted:#6b7280;
+      --btn:#111827;
+      --btnText:#ffffff;
+      --shadow: 0 20px 60px rgba(0,0,0,.12);
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family: ui-rounded, system-ui, -apple-system, "SF Pro Display", "Segoe UI", Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 20% 10%, var(--bg2), transparent 60%),
+                  radial-gradient(1000px 700px at 80% 90%, var(--bg2), transparent 55%),
+                  linear-gradient(180deg, var(--bg1), #fff);
+      color:var(--ink);
+      padding:20px;
+    }
+    .wrap{ width:min(520px, 100%); text-align:center; }
+    .hint{ color:var(--muted); margin: 0 0 14px; font-size: 14px; }
+
+    .card{ width:100%; background:transparent; perspective: 1400px; }
+    .inner{
+      position:relative;
+      width:100%;
+      height: 360px;
+      transform-style:preserve-3d;
+      transition: transform 1s cubic-bezier(.2,.8,.2,1);
+    }
+    .opened .inner{ transform: rotateY(-180deg); }
+
+    .side{
+      position:absolute;
+      inset:0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backface-visibility:hidden;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:26px;
+    }
+
+    .front{
+      background:
+        radial-gradient(500px 220px at 50% 0%, rgba(255,0,128,.10), transparent 60%),
+        radial-gradient(500px 220px at 50% 100%, rgba(255,0,128,.08), transparent 60%),
+        #ffffff;
+    }
+
+    .front .title{ font-size: 28px; font-weight: 800; margin: 0 0 6px; }
+    .front .sub{ margin:0 0 18px; color:var(--muted); font-size: 14px; }
+
+    .press{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border:none;
+      padding:14px 18px;
+      border-radius: 999px;
+      background: var(--btn);
+      color: var(--btnText);
+      font-weight: 800;
+      cursor:pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,.18);
+      transition: transform .08s ease;
+      font-size: 15px;
+    }
+    .press:active{ transform: translateY(1px) scale(.99); }
+
+    .hearts{ position:absolute; inset:0; pointer-events:none; opacity:.9; }
+    .heart{ position:absolute; font-size:18px; animation: floatUp 6s linear infinite; opacity:.55; }
+    @keyframes floatUp{
+      from{ transform: translateY(30px); opacity:.0; }
+      10%{ opacity:.55; }
+      to{ transform: translateY(-420px); opacity:0; }
+    }
+
+    .back{
+      transform: rotateY(180deg);
+      background:
+        radial-gradient(700px 320px at 50% 20%, rgba(255,0,128,.08), transparent 55%),
+        #ffffff;
+      text-align:center;
+    }
+
+    .back h2{ margin:0 0 10px; font-size: 26px; font-weight: 900; line-height: 1.15; }
+    .back p{ margin:0 0 18px; color: var(--muted); font-size: 15px; line-height: 1.5; }
+
+    .yes{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:none;
+      padding:14px 20px;
+      border-radius: 999px;
+      background: #ff2d78;
+      color: white;
+      font-weight: 900;
+      cursor:pointer;
+      box-shadow: 0 12px 28px rgba(255,45,120,.25);
+      transition: transform .08s ease;
+      font-size: 16px;
+    }
+    .yes:active{ transform: translateY(1px) scale(.99); }
+
+    .footer{ margin-top: 14px; font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <p class="hint">💌 A little card made just for you.</p>
+
+    <div class="card" id="card">
+      <div class="inner">
+
+        <div class="side front">
+          <div>
+            <div class="title">For Memee 💌</div>
+            <div class="sub">Aku bikin ini khusus buat kamu.</div>
+            <button class="press" id="openBtn">PRESS HERE ✨</button>
+          </div>
+
+          <div class="hearts" aria-hidden="true">
+            <div class="heart" style="left:10%; top:80%; animation-delay:0s;">💗</div>
+            <div class="heart" style="left:25%; top:92%; animation-delay:1.2s;">💘</div>
+            <div class="heart" style="left:50%; top:88%; animation-delay:.6s;">💞</div>
+            <div class="heart" style="left:72%; top:95%; animation-delay:2.0s;">💗</div>
+            <div class="heart" style="left:86%; top:85%; animation-delay:1.6s;">💘</div>
+          </div>
+        </div>
+
+        <div class="side back">
+          <div>
+            <h2>Memee… 🥺💘<br/>Will you be my Valentine?</h2>
+            <p>
+              Tanggal <b>14 Februari</b> nanti…<br/>
+              aku mau kamu jadi Valentine aku ya 😭❤️
+            </p>
+
+            <button class="yes" id="yesBtn">YES 😭💗</button>
+
+            <div class="footer">
+              (kalau kamu klik YES, aku bakal senyum seharian)
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const card = document.getElementById("card");
+    const openBtn = document.getElementById("openBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    openBtn.addEventListener("click", () => {
+      card.classList.add("opened");
+    });
+
+    // Nomor WA Jonathan (format internasional tanpa +)
+    const yourWhatsAppNumber = "6282314974115";
+
+    yesBtn.addEventListener("click", () => {
+      const msg = encodeURIComponent("Aku klik YES 😭💗 Aku jadi Valentine kamu ya 😚");
+      const waLink = `https://wa.me/${yourWhatsAppNumber}?text=${msg}`;
+      window.location.href = waLink;
+    });
+  </script>
+</body>
+</html>
